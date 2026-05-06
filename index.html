@@ -2,65 +2,340 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Green | AI Digital Twin for Urban Farming</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mr. Green | AI Digital Twin</title>
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="glass-bg"></div>
-    
-    <nav>
-        <div class="logo">🌿 Mr. Green</div>
-        <div class="nav-links">
-            <a href="#vision">Visión</a>
-            <a href="#features">Funciones</a>
-            <a href="https://github.com/martinpestanar/mrgreen-ai-bot" target="_blank" class="btn-secondary">GitHub</a>
+    <!-- Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- SECCIÓN 1 — BARRA DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🌿 Mr. Green</div>
+            <a href="https://wa.me/51981482289?text=Hola%20Mr.%20Green%2C%20quiero%20probar%20gratis" target="_blank" class="btn-nav">Probar Gratis</a>
         </div>
     </nav>
 
-    <header>
-        <div class="hero-content">
-            <h1 class="glitch" data-text="IA que entiende la naturaleza">IA que entiende la naturaleza</h1>
-            <p class="subtitle">El Gemelo Digital Botánico que transforma tu balcón en una fuente de alimento resiliente mediante orquestación avanzada con n8n y visión computacional.</p>
-            <div class="cta-group">
-                <a href="https://wa.me/tu-numero" class="btn-primary">Probar en WhatsApp</a>
-                <a href="#features" class="btn-outline">Ver Tecnología</a>
+    <main>
+        <!-- SECCIÓN 2 — HÉROE -->
+        <section class="hero fade-in">
+            <div class="tag">🌱 Más de 100,000 personas en la comunidad</div>
+            <h1 class="hero-title">Tus plantas ya no se morirán sin que sepas por qué</h1>
+            <p class="hero-subtitle">Mándale una foto a Mr. Green por WhatsApp y en segundos te dice qué tiene tu planta, qué necesita y cómo ayudarla — sin necesidad de saber nada de jardinería.</p>
+            
+            <div class="hero-actions">
+                <a href="https://wa.me/51981482289?text=Hola%20Mr.%20Green%2C%20quiero%20probar%20gratis" target="_blank" class="btn-primary">💬 Probar gratis por WhatsApp</a>
+                <a href="#precio" class="btn-secondary">Ver planes &rarr;</a>
             </div>
-        </div>
-        <div class="hero-visual">
-            <div class="bot-sphere">
-                <div class="inner-glow"></div>
+            
+            <div class="hero-notes">
+                <span>✅ Sin descargar apps</span>
+                <span>✅ Funciona en tu WhatsApp de siempre</span>
+                <span>✅ Primeros días gratis</span>
             </div>
-        </div>
-    </header>
+        </section>
 
-    <section id="features">
-        <h2 class="section-title">Tecnología "Zero Error"</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="icon">👁️</div>
-                <h3>Visión Artificial</h3>
-                <p>Identificación de especies y diagnóstico fitopatológico en tiempo real usando Gemini 2.0 Flash.</p>
+        <!-- SECCIÓN 3 — PUNTOS DE DOLOR -->
+        <section class="section">
+            <div class="section-header fade-in">
+                <span class="tag">¿Te suena familiar?</span>
+                <h2 class="section-title">Si alguna vez dijiste esto, Mr. Green es para ti</h2>
             </div>
-            <div class="feature-card">
-                <div class="icon">🧠</div>
-                <h3>Memoria Contextual</h3>
-                <p>Persistencia de datos en Supabase para recordar el historial de salud de cada una de tus plantas.</p>
+            
+            <div class="grid-cards">
+                <div class="card fade-in">
+                    <div class="card-icon">🤷</div>
+                    <p>"Me regalaron una planta y no sé ni cómo se llama" — en el vivero te lo dijeron pero se te olvidó al llegar a casa.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">😰</div>
+                    <p>"Siempre se me mueren las plantas" — las riego, las cuido, y de la nada empiezan a ponerse feas y no entiendo por qué.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">📱</div>
+                    <p>"Busco en Google y me confundo más" — una página dice una cosa, otra dice lo contrario. ¿A quién le hago caso?</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🌆</div>
+                    <p>"Quiero tener mi huerto pero vivo en un apartamento" — siento que necesito un jardín enorme para poder cultivar algo.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🌦️</div>
+                    <p>"No sé si lo que le pasa es por el clima de mi ciudad" — lo que funciona en otro lugar quizás no funciona aquí.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">😔</div>
+                    <p>"Ya lo intenté antes y fracasé" — invertí tiempo y dinero y al final todo se murió. No quiero repetirlo.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="icon">🔄</div>
-                <h3>Bucle de Autocorrección</h3>
-                <p>Arquitectura de agentes que se auto-corrigen ante errores de SQL o inconsistencias técnicas.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <p>© 2024 Mr. Green - Desarrollado por Martin Pestana con ❤️ y n8n</p>
-    </footer>
+        <!-- SECCIÓN 4 — CÓMO FUNCIONA -->
+        <section class="section">
+            <div class="section-header fade-in">
+                <span class="tag">Sin complicaciones</span>
+                <h2 class="section-title">Más fácil que mandarle un mensaje a un amigo</h2>
+                <p class="section-subtitle">No tienes que instalar nada. No tienes que aprender nada. Solo abre WhatsApp.</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-card fade-in">
+                    <div class="step-number">Paso 1</div>
+                    <h3>📱 Escríbele por WhatsApp</h3>
+                    <p>Dile qué tienes: una planta enferma, ganas de sembrar tomates en tu balcón, o que no sabes cómo se llama lo que compraste.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">Paso 2</div>
+                    <h3>📸 Mándale una foto o nota de voz</h3>
+                    <p>¿Tu planta tiene algo raro? Fotografíala y mándasela. Mr. Green la analiza en segundos y te dice exactamente qué tiene.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">Paso 3</div>
+                    <h3>🌱 Recibe consejos para TU situación</h3>
+                    <p>Sabe en qué ciudad vives, qué clima tienes y qué plantas ya tienes. Sus consejos son para ti, no son genéricos de internet.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">Paso 4</div>
+                    <h3>🔔 Él te avisa antes de que sea tarde</h3>
+                    <p>Si va a hacer mucho calor, te escribe primero. Si le diste tratamiento a una planta, te pregunta cómo va. No tienes que acordarte de nada.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5 — QUÉ PUEDE HACER -->
+        <section class="section highlight-section">
+            <div class="section-header fade-in">
+                <span class="tag">Lo que puede hacer</span>
+                <h2 class="section-title">Tu propio experto en plantas, disponible las 24 horas</h2>
+                <p class="section-subtitle">Sin citas, sin esperas, sin palabras raras. Solo pregunta.</p>
+            </div>
+            
+            <div class="features-list">
+                <div class="feature-item fade-in">
+                    <h3>📸 Identifica cualquier planta con una foto</h3>
+                    <p>¿No sabes cómo se llama? Mándale la foto. Te dice el nombre, qué necesita para vivir y cómo cuidarla en tu ciudad específica.</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <h3>🔍 Detecta plagas y enfermedades al instante</h3>
+                    <p>Hoja amarilla, manchas raras, bichitos. Manda la foto y te dice qué tiene y cómo solucionarlo con lo que tienes en casa.</p>
+                </div>
+                <div class="feature-item premium fade-in">
+                    <h3>🧠 Recuerda todas tus plantas <span class="badge">⭐ Premium</span></h3>
+                    <p>Guarda el historial de cada planta tuya. La próxima vez que preguntes, ya sabe de qué vas. Es como tener una libreta que nunca se pierde.</p>
+                </div>
+                <div class="feature-item premium fade-in">
+                    <h3>🌤️ Consejos según el clima de tu ciudad <span class="badge">⭐ Premium</span></h3>
+                    <p>Sabe dónde vives y qué tiempo hace. Te dice cuándo regar, cuándo abrigar tus plantas y cuándo aprovechar para sembrar.</p>
+                </div>
+                <div class="feature-item premium fade-in">
+                    <h3>📍 Encuentra viveros y tiendas cerca tuyo <span class="badge">⭐ Premium</span></h3>
+                    <p>¿Necesitas comprar tierra o abono? Te dice dónde conseguirlo cerca de donde vives.</p>
+                </div>
+                <div class="feature-item premium fade-in">
+                    <h3>🔔 Te avisa antes de que sea tarde <span class="badge">⭐ Premium</span></h3>
+                    <p>"Mañana hay helada, cubre tus hierbas." "Han pasado 3 días desde que trataste los pulgones, ¿cómo va?" Él no se olvida.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6 — PARA QUIÉN ES -->
+        <section class="section">
+            <div class="section-header fade-in">
+                <span class="tag">¿Esto es para mí?</span>
+                <h2 class="section-title">Mr. Green es para ti si...</h2>
+                <p class="section-subtitle">No importa si tienes una parcela grande o solo una maceta en la ventana.</p>
+            </div>
+            
+            <div class="grid-cards profiles-grid">
+                <div class="card fade-in">
+                    <h3>🏙️ Vives en la ciudad</h3>
+                    <p>Tienes un balcón, una ventana o una terraza pequeña. Quieres cultivar algo pero sientes que el espacio no alcanza.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3>🏡 Tienes jardín o patio</h3>
+                    <p>Ya tienes espacio pero no sabes qué sembrar, en qué época, ni cómo cuidarlo correctamente.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3>🌻 Amas tus plantas de interior</h3>
+                    <p>Coleccionas plantas en casa pero siempre terminan mal sin entender por qué.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3>👨‍👩‍👧 Quieres cultivar en familia</h3>
+                    <p>Quieres que tus hijos vean de dónde viene la comida. El huerto como proyecto familiar.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3>🌾 Tienes parcela o campo</h3>
+                    <p>Tienes espacio pero quieres una segunda opinión accesible sin contratar a nadie.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3>🌱 Empiezas desde cero</h3>
+                    <p>Nunca has tenido una planta en tu vida. Perfecto. Mr. Green empieza contigo desde el principio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7 — TESTIMONIOS -->
+        <section class="section">
+            <div class="section-header fade-in">
+                <span class="tag">Lo que dice la comunidad</span>
+                <h2 class="section-title">Personas reales, plantas reales</h2>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-card fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Le mandé la foto de mi albahaca y en un segundo me dijo que tenía hongos por el exceso de humedad. Le hice caso y en una semana ya estaba perfecta. Antes hubiera tirado la maceta."</p>
+                    <div class="author">— Carmen R. · Lima, Perú · Balcón de 4m²</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Me dijeron que en mi apartamento no podía cultivar nada. Ahora tengo tomates cherry, lechugas y hierbas en mi terraza. Mr. Green me dijo exactamente qué sembrar en mi ciudad y en qué época."</p>
+                    <div class="author">— Andrés M. · Bogotá, Colombia · Terraza urbana</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Lo que más me gusta es que me escribe él primero. El lunes me avisó que iba a llover mucho y que cubriera mis suculentas. Sin ese aviso se me hubieran pudrido todas."</p>
+                    <div class="author">— Patricia V. · Ciudad de México · Jardín familiar</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8 — PRECIO -->
+        <section id="precio" class="section">
+            <div class="section-header fade-in">
+                <span class="tag">Sin sorpresas</span>
+                <h2 class="section-title">Elige cómo quieres empezar</h2>
+                <p class="section-subtitle">Pruébalo gratis. Si te enamora, continúa por menos de lo que cuesta un café al mes.</p>
+            </div>
+            
+            <div class="pricing-container">
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <h3>Plan gratuito</h3>
+                        <div class="price">$0 <span>para siempre</span></div>
+                        <p>Para ver con tus propios ojos cómo funciona.</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 2 fotos de plantas por semana</li>
+                        <li>✓ 5 preguntas por día</li>
+                        <li>✓ Identificación de plantas</li>
+                        <li>✓ Diagnóstico básico de enfermedades</li>
+                        <li class="disabled">✗ Memoria de tus plantas</li>
+                        <li class="disabled">✗ Clima de tu ciudad</li>
+                        <li class="disabled">✗ Recordatorios y avisos</li>
+                        <li class="disabled">✗ Viveros y tiendas cercanas</li>
+                    </ul>
+                    <a href="https://wa.me/51981482289?text=Hola%20Mr.%20Green%2C%20quiero%20probar%20gratis" target="_blank" class="btn-outline w-100">Empezar gratis</a>
+                </div>
+                
+                <div class="pricing-card popular fade-in">
+                    <div class="popular-badge">⭐ Más popular</div>
+                    <div class="pricing-header">
+                        <h3>Plan Completo</h3>
+                        <div class="price">$7 <span>/ mes</span></div>
+                        <p>Todo lo que necesitas para que tus plantas nunca más se mueran sin razón.</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Fotos ilimitadas</li>
+                        <li>✓ Conversaciones ilimitadas</li>
+                        <li>✓ Identificación y diagnóstico completo</li>
+                        <li>✓ Memoria de todas tus plantas</li>
+                        <li>✓ Clima y consejos para tu ciudad</li>
+                        <li>✓ Recordatorios y avisos automáticos</li>
+                        <li>✓ Viveros y tiendas cercanas</li>
+                        <li>✓ Reporte semanal de tu huerto</li>
+                    </ul>
+                    <a href="https://wa.me/51981482289?text=Hola%20Mr.%20Green%2C%20quiero%20probar%20gratis" target="_blank" class="btn-primary w-100">Quiero el plan completo &rarr;</a>
+                    <p class="pricing-note">💳 Cancelas cuando quieras. Sin contratos. Sin trampa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 9 — PREGUNTAS FRECUENTES -->
+        <section class="section">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Preguntas que casi todos hacen</h2>
+            </div>
+            
+            <div class="faq-container fade-in">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Tengo que descargar alguna app?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para nada. Mr. Green funciona directo en tu WhatsApp de siempre. Sin descargas, sin registros complicados.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Funciona aunque no sepa nada de plantas?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Precisamente para eso está. No necesitas saber nada. Cuéntale tu problema con tus palabras y él lo entiende.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Funciona en mi país y mi ciudad?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí. Mr. Green detecta tu ubicación y adapta sus consejos al clima de donde vives, sea donde sea.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Puedo cancelar cuando quiera?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Claro. Sin contratos, sin letras pequeñas. Cancelas en cualquier momento y sin dar explicaciones.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Sirve si solo tengo un balcón pequeño?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Especialmente para eso. Mr. Green te dice exactamente qué puedes cultivar en tu espacio y cómo hacerlo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué pasa si el bot no sabe algo?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Busca la información actualizada en internet en tiempo real antes de responderte.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 10 — CIERRE FINAL -->
+        <section class="section final-cta fade-in">
+            <h2 class="section-title">Tu primera planta sana empieza hoy</h2>
+            <p class="section-subtitle">Pruébalo gratis ahora mismo. En 60 segundos ya estarás hablando con Mr. Green sobre tus plantas.</p>
+            <a href="https://wa.me/51981482289?text=Hola%20Mr.%20Green%2C%20quiero%20probar%20gratis" target="_blank" class="btn-primary btn-large">💬 Comenzar gratis en WhatsApp</a>
+            <p class="pricing-note mt-4">Sin tarjeta de crédito para la prueba gratuita 🌱</p>
+        </section>
+    </main>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/51981482289?text=Hola%20Mr.%20Green%2C%20quiero%20probar%20gratis" target="_blank" class="floating-wa" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="white">
+            <path d="M16.14.33C7.4.33.28 7.45.28 16.2c0 2.8.73 5.52 2.13 7.92L.25 31.67l7.73-2.03a15.86 15.86 0 008.16 2.25c8.74 0 15.86-7.12 15.86-15.88S24.88.33 16.14.33zm0 26.83a13.1 13.1 0 01-6.68-1.82l-.48-.28-4.97 1.3 1.32-4.84-.31-.5A13.2 13.2 0 012.98 16.2c0-7.25 5.9-13.16 13.16-13.16s13.16 5.9 13.16 13.16-5.9 13.17-13.16 13.17zM23.36 21c-.4-.2-2.35-1.16-2.72-1.3-.36-.12-.63-.2-.95.2-.3.4-.94 1.16-1.16 1.4-.2.24-.4.27-.8.07a10.87 10.87 0 01-3.2-1.98 11.96 11.96 0 01-2.22-2.76c-.2-.36 0-.54.18-.73.16-.17.36-.42.54-.63.2-.2.25-.36.38-.6.1-.25.07-.46-.03-.66-.1-.2-.96-2.3-1.3-3.15-.35-.84-.7-.72-.96-.74h-.82c-.3 0-.82.1-1.25.57-.42.48-1.63 1.6-1.63 3.9 0 2.3 1.67 4.53 1.9 4.83.24.3 3.28 5.03 7.95 7.04 1.1.47 1.97.76 2.65.98.42.12.82.23 1.25.27 1.05.1 2.34-.43 2.67-.85.34-.42.34-.78.24-.85-.1-.08-.36-.12-.76-.32z"/>
+        </svg>
+    </a>
 
     <script src="index.js"></script>
 </body>
