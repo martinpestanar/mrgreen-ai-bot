@@ -160,6 +160,11 @@ a {
     font-size: 1.1rem;
 }
 
+.highlight {
+    color: var(--primary);
+    font-weight: 700;
+}
+
 .w-100 { width: 100%; }
 
 /* Navigation */
@@ -740,6 +745,17 @@ main {
     align-items: center;
     gap: 12px;
     font-size: 1.05rem;
+    color: var(--text-body);
+}
+
+.pricing-card.popular .pricing-features li {
+    color: var(--text-title);
+    font-weight: 500;
+}
+
+.pricing-card.popular .pricing-features li svg {
+    color: var(--primary);
+    filter: drop-shadow(0 0 5px var(--primary-glow));
 }
 
 .pricing-features li.disabled {
