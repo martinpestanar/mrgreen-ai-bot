@@ -16,6 +16,12 @@
     --chat-bg: #E5DDD5;
     --chat-bubble-out: #D9FDD3;
     --chat-bubble-in: #FFFFFF;
+
+    /* Gradients */
+    --grad-hero: radial-gradient(circle at top right, rgba(37, 211, 102, 0.1), transparent 50%);
+    --grad-steps: linear-gradient(135deg, rgba(37,211,102,0.05) 0%, rgba(59,130,246,0.05) 100%);
+    --grad-pricing: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    --grad-btn: linear-gradient(135deg, #25D366 0%, #2ced71 100%);
     
     /* Metrics */
     --radius-sm: 12px;
@@ -46,6 +52,11 @@
     --chat-bg: #0B141A;
     --chat-bubble-out: #005C4B;
     --chat-bubble-in: #202C33;
+
+    /* Gradients */
+    --grad-hero: radial-gradient(circle at top right, rgba(37, 211, 102, 0.15), transparent 60%);
+    --grad-steps: linear-gradient(135deg, rgba(37,211,102,0.1) 0%, rgba(59,130,246,0.05) 100%);
+    --grad-pricing: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
 }
 
 /* Base Reset */
@@ -81,18 +92,20 @@ a {
 /* Background Effects */
 .bg-glow {
     position: fixed;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     background: var(--primary);
     filter: blur(150px);
     border-radius: 50%;
-    opacity: 0.15;
+    opacity: 0.1;
     z-index: -1;
     pointer-events: none;
+    transition: opacity 0.5s ease;
 }
+:root.dark-theme .bg-glow { opacity: 0.2; }
 
-.bg-glow-1 { top: -100px; left: -100px; }
-.bg-glow-2 { bottom: -100px; right: -100px; background: #3B82F6; }
+.bg-glow-1 { top: -150px; right: -100px; }
+.bg-glow-2 { bottom: -150px; left: -100px; background: #3B82F6; }
 
 /* Buttons */
 .btn-primary, .btn-secondary, .btn-outline, .btn-nav {
@@ -110,15 +123,15 @@ a {
 }
 
 .btn-primary {
-    background: var(--primary);
+    background: var(--grad-btn);
     color: #000;
     box-shadow: 0 8px 24px var(--primary-glow);
 }
 
 .btn-primary:hover, .btn-primary:active {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 0 12px 32px var(--primary-glow);
-    background: #2ced71;
+    filter: brightness(1.1);
 }
 
 .btn-secondary {
@@ -136,6 +149,10 @@ a {
     background: transparent;
     color: var(--text-title);
     border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    background: rgba(128,128,128,0.1);
 }
 
 .btn-large {
@@ -175,7 +192,7 @@ a {
 .btn-nav {
     padding: 8px 20px;
     font-size: 0.9rem;
-    background: var(--primary);
+    background: var(--grad-btn);
     color: #000;
 }
 
@@ -185,9 +202,15 @@ main {
 }
 
 .section {
-    padding: 60px var(--spacing-sm);
+    padding: 80px var(--spacing-sm);
+    position: relative;
+}
+
+.section-inner {
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .section-header {
@@ -202,14 +225,17 @@ main {
     padding: 6px 16px;
     border-radius: var(--radius-full);
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 16px;
     border: 1px solid rgba(37, 211, 102, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .section-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 16px;
+    font-weight: 800;
 }
 
 .section-subtitle {
@@ -222,12 +248,14 @@ main {
 
 /* Hero Section */
 .hero {
-    padding: 80px var(--spacing-sm) 60px;
-    max-width: 1200px;
-    margin: 0 auto;
+    background: var(--grad-hero);
+    padding: 100px var(--spacing-sm) 60px;
+    position: relative;
 }
 
 .hero-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -240,12 +268,13 @@ main {
 }
 
 .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 800;
     margin-bottom: var(--spacing-md);
     background: linear-gradient(135deg, var(--text-title) 0%, #25D366 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
@@ -263,9 +292,22 @@ main {
 .hero-notes {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 0.85rem;
+    gap: 12px;
+    font-size: 0.9rem;
     color: var(--text-body);
+    align-items: center;
+}
+
+.hero-note-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-check {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
 }
 
 /* SMARTPHONE MOCKUP & CHAT */
@@ -285,12 +327,15 @@ main {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     position: relative;
     transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-/* The "Notch" */
+:root.dark-theme .smartphone-mockup {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
 .smartphone-mockup::before {
     content: '';
     position: absolute;
@@ -376,10 +421,9 @@ main {
     justify-content: space-between;
 }
 
-/* Chat Bubbles */
 .chat-bubble {
-    max-width: 80%;
-    padding: 8px 12px;
+    max-width: 85%;
+    padding: 10px 14px;
     border-radius: 12px;
     font-size: 0.9rem;
     color: var(--text-title);
@@ -388,6 +432,7 @@ main {
     transform: translateY(10px);
     animation: popIn 0.3s forwards;
     word-wrap: break-word;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .chat-bubble.out {
@@ -412,7 +457,6 @@ main {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Typing indicator */
 .typing-indicator {
     display: flex;
     gap: 4px;
@@ -441,12 +485,13 @@ main {
     40% { transform: scale(1); }
 }
 
-
 /* Grids & Cards */
 .grid-cards {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {
@@ -467,44 +512,65 @@ main {
     font-size: 1.2rem;
 }
 
-/* Steps */
+/* Modern Steps Section */
+.steps-section {
+    background: var(--grad-steps);
+}
+
 .steps-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    transition: var(--transition);
     position: relative;
-    padding-left: 32px;
-    border-left: 2px solid var(--border-color);
+    overflow: hidden;
 }
 
-.step-number {
+.step-card::before {
+    content: '';
     position: absolute;
-    left: -2px;
     top: 0;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--primary);
-    background: var(--bg-main);
-    padding: 4px 0;
-    transform: translateX(-50%);
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--grad-btn);
 }
 
-.step-card h3 {
+.step-glow {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary) 0%, rgba(37,211,102,0.3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+}
+
+.step-content h3 {
+    font-size: 1.3rem;
     margin-bottom: 8px;
-    font-size: 1.2rem;
 }
 
 /* Features List */
 .highlight-section {
     background: var(--bg-glass);
     border-radius: var(--radius-md);
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px auto;
     border: 1px solid var(--border-color);
+    max-width: 1200px;
+    padding: var(--spacing-lg);
 }
 
 .features-list {
@@ -540,9 +606,11 @@ main {
 
 /* Testimonials */
 .testimonials-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .testimonial-card {
@@ -550,6 +618,37 @@ main {
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.testimonial-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
+}
+
+.testimonial-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-meta strong {
+    font-size: 1.1rem;
+    color: var(--text-title);
+}
+
+.testimonial-meta span {
+    font-size: 0.85rem;
+    color: var(--text-body);
 }
 
 .stars {
@@ -561,47 +660,52 @@ main {
 
 .quote {
     font-style: italic;
-    margin-bottom: 16px;
+    font-size: 1.05rem;
     color: var(--text-title);
+    line-height: 1.5;
 }
 
-.author {
-    font-size: 0.85rem;
-    opacity: 0.8;
+/* Pricing Section */
+.pricing-section {
+    background: var(--grad-steps);
 }
 
-/* Pricing */
 .pricing-container {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .pricing-card {
-    background: var(--bg-glass);
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     padding: var(--spacing-lg);
     position: relative;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .pricing-card.popular {
-    border-color: var(--primary);
-    background: rgba(37, 211, 102, 0.05);
+    border: 2px solid var(--primary);
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(37,211,102,0.15);
 }
 
 .popular-badge {
     position: absolute;
-    top: -12px;
+    top: -14px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--primary);
-    color: #000;
-    font-size: 0.75rem;
+    background: var(--grad-pricing);
+    color: #fff;
+    font-size: 0.85rem;
     font-weight: 700;
-    padding: 4px 12px;
+    padding: 6px 16px;
     border-radius: var(--radius-full);
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.3);
 }
 
 .pricing-header {
@@ -612,15 +716,16 @@ main {
 }
 
 .price {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 800;
     color: var(--text-title);
     margin: 8px 0;
+    line-height: 1;
 }
 
 .price span {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--text-body);
 }
 
@@ -630,14 +735,16 @@ main {
 }
 
 .pricing-features li {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    font-size: 1.05rem;
 }
 
 .pricing-features li.disabled {
     opacity: 0.4;
+    text-decoration: line-through;
 }
 
 .pricing-note {
@@ -652,6 +759,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .faq-item {
@@ -704,8 +813,8 @@ main {
 /* Final CTA */
 .final-cta {
     text-align: center;
-    padding: 80px var(--spacing-sm);
-    background: radial-gradient(circle at center, rgba(37, 211, 102, 0.1) 0%, transparent 70%);
+    padding: 100px var(--spacing-sm);
+    background: var(--grad-hero);
 }
 
 /* Floating WhatsApp Button */
@@ -720,21 +829,22 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 24px rgba(37,211,102,0.4);
     z-index: 1000;
     transition: var(--transition);
 }
 
 .floating-wa:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translateY(-5px);
     background-color: #2ced71;
+    box-shadow: 0 12px 32px rgba(37,211,102,0.6);
 }
 
 /* Animations */
 .fade-in {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-in.visible {
@@ -744,7 +854,7 @@ main {
 
 /* DESKTOP RESPONSIVE (min-width: 768px) */
 @media (min-width: 768px) {
-    .section { padding: 80px var(--spacing-md); }
+    .section { padding: 100px var(--spacing-md); }
     
     .hero-content-wrapper {
         flex-direction: row;
@@ -755,7 +865,6 @@ main {
     
     .hero-text { text-align: left; }
     .hero-title { font-size: 3.5rem; }
-    .hero-subtitle { font-size: 1.25rem; }
     .hero-actions { flex-direction: row; justify-content: flex-start; }
     .hero-notes { flex-direction: row; justify-content: flex-start; gap: 24px; }
     
@@ -764,20 +873,23 @@ main {
     
     .features-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     
-    .testimonials-container { flex-direction: row; gap: 24px; }
-    .testimonial-card { flex: 1; }
+    .testimonials-container { grid-template-columns: repeat(3, 1fr); gap: 24px; }
     
     .pricing-container { flex-direction: row; gap: 32px; align-items: center; justify-content: center; }
     .pricing-card { flex: 1; max-width: 400px; }
     
-    .card:hover, .feature-item:hover, .step-card:hover {
+    .steps-container { grid-template-columns: repeat(2, 1fr); }
+    
+    .card:hover, .feature-item:hover, .step-card:hover, .testimonial-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        border-color: var(--primary);
     }
     
     :root.dark-theme .card:hover, 
     :root.dark-theme .feature-item:hover, 
-    :root.dark-theme .step-card:hover {
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    :root.dark-theme .step-card:hover,
+    :root.dark-theme .testimonial-card:hover {
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     }
 }
