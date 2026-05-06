@@ -73,6 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatContainer = document.getElementById('chat-container');
     if (!chatContainer) return;
 
+    // Helper para calcular tiempo de lectura (aprox 50ms por carácter, min 1.5s)
+    const getReadingDelay = (text) => {
+        return Math.max(1500, text.length * 50);
+    };
+
     // Helper para crear burbujas
     const createBubble = (text, type, isImage = false, imgSrc = '') => {
         const bubble = document.createElement('div');
@@ -114,30 +119,32 @@ document.addEventListener('DOMContentLoaded', () => {
         await new Promise(r => setTimeout(r, 1000));
 
         // --- ESCENARIO 1: CLIMA ---
-        // Usuario pregunta
-        chatContainer.appendChild(createBubble("¿Cómo va a estar el clima hoy para mis plantas? 🌤️", "out"));
+        const msg1 = "¿Cómo va a estar el clima hoy para mis plantas? 🌤️";
+        chatContainer.appendChild(createBubble(msg1, "out"));
         scrollToBottom();
-        await new Promise(r => setTimeout(r, 1500));
+        await new Promise(r => setTimeout(r, getReadingDelay(msg1)));
 
         // Bot escribe
         const typing1 = createTypingIndicator();
         chatContainer.appendChild(typing1);
         scrollToBottom();
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 2000)); // Tiempo de "pensar"
 
         // Bot responde
         typing1.remove();
-        chatContainer.appendChild(createBubble("Hola Martín 🌿. Hoy en tu ciudad tendremos 32°C con sol fuerte. ¡No olvides regar tus suculentas antes del mediodía para evitar estrés térmico! 💧", "in"));
+        const resp1 = "Hola Martín 🌿. Hoy en tu ciudad tendremos 32°C con sol fuerte. ¡No olvides regar tus suculentas antes del mediodía para evitar estrés térmico! 💧";
+        chatContainer.appendChild(createBubble(resp1, "in"));
         scrollToBottom();
+        await new Promise(r => setTimeout(r, getReadingDelay(resp1))); // Tiempo para leer respuesta
         
-        // Pausa larga entre escenarios
-        await new Promise(r => setTimeout(r, 4000));
+        // Pausa entre escenarios
+        await new Promise(r => setTimeout(r, 2000));
 
         // --- ESCENARIO 2: PLANTA ENFERMA ---
-        // Usuario envía imagen
-        chatContainer.appendChild(createBubble("¿Qué le pasa a mi Monstera? Las hojas se están poniendo así.", "out", true, "plant.png"));
+        const msg2 = "¿Qué le pasa a mi Monstera? Las hojas se están poniendo así.";
+        chatContainer.appendChild(createBubble(msg2, "out", true, "plant.png"));
         scrollToBottom();
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, getReadingDelay(msg2) + 1000)); // Extra por la imagen
 
         // Bot escribe
         const typing2 = createTypingIndicator();
@@ -147,11 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Bot responde
         typing2.remove();
-        chatContainer.appendChild(createBubble("Parece que tiene exceso de riego (hojas amarillas y blandas). Te recomiendo dejar secar el sustrato por completo unos 4 días y asegurarte de que la maceta tenga buen drenaje. ¿Quieres que te avise en 4 días para revisarla?", "in"));
+        const resp2 = "Parece que tiene exceso de riego (hojas amarillas y blandas). Te recomiendo dejar secar el sustrato por completo unos 4 días y asegurarte de que la maceta tenga buen drenaje. ¿Quieres que te avise en 4 días para revisarla?";
+        chatContainer.appendChild(createBubble(resp2, "in"));
         scrollToBottom();
+        
+        // TIEMPO FINAL PARA LEER EL ÚLTIMO MENSAJE (importante!)
+        await new Promise(r => setTimeout(r, getReadingDelay(resp2) + 4000));
 
-        // Reiniciar el ciclo después de un tiempo
-        await new Promise(r => setTimeout(r, 6000));
+        // Reiniciar el ciclo
         runChatSimulation();
     };
 
