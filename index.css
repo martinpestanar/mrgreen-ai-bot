@@ -190,9 +190,22 @@ a {
 }
 
 .logo {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: var(--text-title);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.01em;
+}
+
+.logo svg {
+    filter: drop-shadow(0 2px 4px var(--primary-glow));
+    transition: var(--transition);
+}
+
+.logo:hover svg {
+    transform: rotate(-10deg) scale(1.1);
 }
 
 .btn-nav {
