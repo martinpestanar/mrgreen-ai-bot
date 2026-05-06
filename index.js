@@ -1,6 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Animaciones al hacer scroll (Intersection Observer)
+    // --- 1. MODO CLARO / OSCURO AUTOMÁTICO ---
+    const checkTimeAndSetTheme = () => {
+        const hour = new Date().getHours();
+        // Modo oscuro de 19:00 (7 PM) a 05:59 (5 AM)
+        if (hour >= 19 || hour < 6) {
+            document.documentElement.classList.add('dark-theme');
+        } else {
+            // Modo claro de 06:00 a 18:59
+            document.documentElement.classList.remove('dark-theme');
+        }
+    };
+    
+    // Ejecutar al cargar
+    checkTimeAndSetTheme();
+    // Actualizar cada minuto por si cruza el umbral
+    setInterval(checkTimeAndSetTheme, 60000);
+
+
+    // --- 2. ANIMACIONES AL HACER SCROLL ---
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -11,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Opcional: Descomentar si solo queremos que se anime una vez
-                // observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
@@ -20,26 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => observer.observe(el));
 
-    // 2. Acordeón para Preguntas Frecuentes (FAQ)
+
+    // --- 3. ACORDEÓN PARA FAQ ---
     const faqItems = document.querySelectorAll('.faq-item');
-    
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        
         question.addEventListener('click', () => {
-            // Cerrar otros abiertos (comportamiento opcional, estilo acordeón clásico)
             faqItems.forEach(otherItem => {
                 if (otherItem !== item && otherItem.classList.contains('active')) {
                     otherItem.classList.remove('active');
                 }
             });
-            
-            // Alternar el actual
             item.classList.toggle('active');
         });
     });
 
-    // 3. Scroll suave para enlaces internos
+    // --- 4. SCROLL SUAVE ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -55,4 +67,94 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+
+    // --- 5. SIMULACIÓN DE CHAT WHATSAPP ---
+    const chatContainer = document.getElementById('chat-container');
+    if (!chatContainer) return;
+
+    // Helper para crear burbujas
+    const createBubble = (text, type, isImage = false, imgSrc = '') => {
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${type}`;
+        
+        if (isImage) {
+            bubble.innerHTML = `<img src="${imgSrc}" class="chat-img" alt="Foto enviada"> ${text}`;
+        } else {
+            bubble.textContent = text;
+        }
+        
+        return bubble;
+    };
+
+    // Helper para indicador escribiendo
+    const createTypingIndicator = () => {
+        const typing = document.createElement('div');
+        typing.className = 'typing-indicator';
+        typing.id = 'typing-indicator';
+        typing.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        return typing;
+    };
+
+    // Helper para auto-scroll al final del chat
+    const scrollToBottom = () => {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    };
+
+    // Secuencia de animación del chat
+    const runChatSimulation = async () => {
+        // Limpiar chat
+        chatContainer.innerHTML = '';
+        
+        // Pausa inicial
+        await new Promise(r => setTimeout(r, 1000));
+
+        // --- ESCENARIO 1: CLIMA ---
+        // Usuario pregunta
+        chatContainer.appendChild(createBubble("¿Cómo va a estar el clima hoy para mis plantas? 🌤️", "out"));
+        scrollToBottom();
+        await new Promise(r => setTimeout(r, 1500));
+
+        // Bot escribe
+        const typing1 = createTypingIndicator();
+        chatContainer.appendChild(typing1);
+        scrollToBottom();
+        await new Promise(r => setTimeout(r, 2000));
+
+        // Bot responde
+        typing1.remove();
+        chatContainer.appendChild(createBubble("Hola Martín 🌿. Hoy en tu ciudad tendremos 32°C con sol fuerte. ¡No olvides regar tus suculentas antes del mediodía para evitar estrés térmico! 💧", "in"));
+        scrollToBottom();
+        
+        // Pausa larga entre escenarios
+        await new Promise(r => setTimeout(r, 4000));
+
+        // --- ESCENARIO 2: PLANTA ENFERMA ---
+        // Usuario envía imagen
+        chatContainer.appendChild(createBubble("¿Qué le pasa a mi Monstera? Las hojas se están poniendo así.", "out", true, "plant.png"));
+        scrollToBottom();
+        await new Promise(r => setTimeout(r, 2000));
+
+        // Bot escribe
+        const typing2 = createTypingIndicator();
+        chatContainer.appendChild(typing2);
+        scrollToBottom();
+        await new Promise(r => setTimeout(r, 2500));
+
+        // Bot responde
+        typing2.remove();
+        chatContainer.appendChild(createBubble("Parece que tiene exceso de riego (hojas amarillas y blandas). Te recomiendo dejar secar el sustrato por completo unos 4 días y asegurarte de que la maceta tenga buen drenaje. ¿Quieres que te avise en 4 días para revisarla?", "in"));
+        scrollToBottom();
+
+        // Reiniciar el ciclo después de un tiempo
+        await new Promise(r => setTimeout(r, 6000));
+        runChatSimulation();
+    };
+
+    // Iniciar simulación
+    runChatSimulation();
 });
