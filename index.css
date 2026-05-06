@@ -813,8 +813,20 @@ main {
 /* Final CTA */
 .final-cta {
     text-align: center;
-    padding: 100px var(--spacing-sm);
+    padding: 120px var(--spacing-sm);
     background: var(--grad-hero);
+}
+
+.final-cta .section-title {
+    margin-bottom: 24px;
+}
+
+.final-cta .section-subtitle {
+    margin-bottom: 48px;
+}
+
+.final-cta .pricing-note {
+    margin-top: 32px;
 }
 
 /* Floating WhatsApp Button */
